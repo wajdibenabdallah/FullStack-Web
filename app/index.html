@@ -1,0 +1,93 @@
+<!doctype html>
+<html ng-app="moviesshowApp">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <!-- endbuild -->
+  <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/languages.css">
+</head>
+<body ng-controller="MainCtrl">
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#" translate="TITLE"></a>
+  </div>
+  <div class="collapse navbar-collapse nav">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">{{'HOME' | translate}}</a></li>
+      <li><a href="#about">{{'ABOUT' | translate}}</a></li>
+      <li><a href="#contact">{{'CONTACT' | translate}}</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">{{'LANGUAGES' | translate}}<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><span class="lang-sm lang-lbl" lang="fr" ng-click="updateLanguage('fr')"></span></li>
+          <li><span class="lang-sm lang-lbl" lang="en" ng-click="updateLanguage('en')"></span></li>
+        </ul>
+      </li>
+      <li class="auth">
+        <a href="">{{'SIGNUP' | translate}}</a>
+      </li>
+      <li class="auth">
+        <a href="">{{'LOGIN' | translate}}</a>
+      </li>
+    </ul>
+  </div><!-- /.nav-collapse -->
+</nav><!-- /.navbar -->
+
+<div class="container">
+  <ng-include src="'./views/container.html'"></ng-include>
+  <hr>
+  <footer>
+    <p>&copy; 2016 Company, Inc.</p>
+  </footer>
+</div><!--/.container-->
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+  !function (A, n, g, u, l, a, r) {
+    A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+        (A[l].q = A[l].q || []).push(arguments)
+      }, A[l].l = +new Date, a = n.createElement(g),
+      r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+  }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+</script>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+<script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/translator.js"></script>
+<!-- endbuild -->
+</body>
+</html>

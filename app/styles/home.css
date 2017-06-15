@@ -1,0 +1,22 @@
+.thumbnail {
+  width: 200px;
+  height: 150px;
+}
+
+a.thumbnail > img {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+}
+
+.dropdown{
+  cursor: pointer;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+  margin-left:20%;
+}
+
+.auth{
+  left:50%
+}

@@ -1,0 +1,12 @@
+{
+  "moviesshowDB": {
+    "host": "localhost",
+    "port": 0,
+    "url": "",
+    "database": "moviesshow",
+    "password": "",
+    "name": "moviesshowDB",
+    "user": "root",
+    "connector": "mysql"
+  }
+}
