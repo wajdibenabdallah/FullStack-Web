@@ -6,7 +6,7 @@
     "validateUpsert": true
   },
   "properties": {
-    "id_movie": {
+    "id": {
       "type": "number",
       "required": true
     },
@@ -19,11 +19,23 @@
       "required": true
     },
     "year": {
-      "type": "number",
+      "type": "string",
       "required": true
     },
     "country": {
       "type": "string",
+      "required": true
+    },
+    "note": {
+      "type": "number",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    },
+    "links": {
+      "type": "array",
       "required": true
     }
   },
