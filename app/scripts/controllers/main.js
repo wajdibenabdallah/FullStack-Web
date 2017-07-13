@@ -37,3 +37,18 @@ myApp.directive('ngFilm', function () {
         templateUrl: 'views/film.html'
     };
 })
+
+/*
+    https://angular-ui.github.io/bootstrap/
+*/
+myApp.controller('RatingDemoCtrl', function ($scope) {
+    $scope.rate = 0;
+    $scope.max = 5;
+    $scope.isReadonly = false;
+
+    $scope.hoveringOver = function(value) {
+        $scope.overStar = value;
+        //$scope.value = value;
+    };
+
+});

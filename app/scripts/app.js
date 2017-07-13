@@ -9,4 +9,4 @@
  * Main module of the application.
  */
 
-var myApp = angular.module('moviesshowApp', ['pascalprecht.translate','ngCookies']);
+var myApp = angular.module('moviesshowApp', ['pascalprecht.translate','ngCookies','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
