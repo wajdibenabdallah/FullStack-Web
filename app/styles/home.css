@@ -20,3 +20,7 @@ a.thumbnail > img {
 .auth{
   left:50%
 }
+
+#listFilms{
+  margin-right: 100px;
+}

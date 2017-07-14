@@ -7,5 +7,6 @@
   "LAN_FRA": "Français",
   "LAN_ENG": "Anglais",
   "SIGNUP": "Inscription",
-  "LOGIN": "Connexion"
+  "LOGIN": "Connexion",
+  "WELCOME":"Bienvenue dans notre site web"
 }
