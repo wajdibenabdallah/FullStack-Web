@@ -1,0 +1,45 @@
+<div class="row">
+    <h6>{{film.name}}</h6>
+    <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail thumbnail-element">
+            <img ng-src="{{film.image}}" onerror="this.src='../images/films/_.png'" alt="">
+        </a>
+    </div>
+    <div ng-controller="RatingDemoCtrl" class="col-xs-offset-4 col-md-offset-4">
+        <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)"
+              on-leave="overStar = null" titles="['one','two','three','four','five']" aria-labelledby="default-rating">
+        </span>
+        <span class="label" ng-class="{'label-success': value}" ng-show="overStar">
+            {{value}}
+        </span>
+    </div>
+    <div class="col-xs-offset-4 col-md-offset-4">
+        <span>
+            Title
+        </span>
+        <span>
+            Genre
+        </span>
+        <span>
+            Country
+        </span>
+        <table>
+            <tr>
+                <td>
+                    Link 1
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Link 2
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Link 3
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

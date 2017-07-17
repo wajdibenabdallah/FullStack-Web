@@ -4,7 +4,7 @@
         <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)"
               on-leave="overStar = null" titles="['one','two','three','four','five']" aria-labelledby="default-rating"></span>
         <span class="label"
-              ng-class="{'label-success': value}">{{value}}</span>
+              ng-class="{'label-success': value}" ng-show="overStar">{{value}}</span>
     </div>
     <div class="row">
         <div class="col-xs-6 col-md-3">
