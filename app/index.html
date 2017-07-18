@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/languages.css">
 </head>
-<body ng-controller="MainCtrl" class="container">
-<nav class="navbar navbar-fixed-top navbar-inverse">
+<body ng-controller="MainCtrl" class="center">
+<nav class="navbar navbar-fixed-top navbar-inverse center">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                 aria-expanded="false" aria-controls="navbar">
@@ -40,25 +40,27 @@
                     <li><span class="lang-sm lang-lbl" lang="en" ng-click="updateLanguage('en')"></span></li>
                 </ul>
             </li>
-            <li class="auth">
+        </ul>
+        <ul class="auth nav navbar-nav">
+            <li>
                 <a href="">{{'SIGNUP' | translate}}</a>
             </li>
-            <li class="auth">
+            <li>
                 <a href="">{{'LOGIN' | translate}}</a>
             </li>
         </ul>
     </div>
 </nav>
 
-<div>
+<div class="center">
     <div>
         <ng-include src="'./views/container.html'"></ng-include>
     </div>
-    <footer>
-        <p>&copy; 2017 FullStack-LTD, Confluence</p>
-    </footer>
 </div><!--/.container-->
-
+<hr>
+<footer class="center">
+    <p>&copy; 2017 FullStack-LTD, Confluence</p>
+</footer>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>
     !function (A, n, g, u, l, a, r) {

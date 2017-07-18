@@ -8,32 +8,12 @@
  * Controller of the moviesshowApp
  */
 
-app.config(function ($routeProvider) {
-    $routeProvider
-        .when("/", {
-            templateUrl: "main.htm"
-        })
-        .when("/red", {
-            templateUrl: "red.htm"
-        })
-        .when("/green", {
-            templateUrl: "green.htm"
-        })
-        .when("/blue", {
-            templateUrl: "blue.htm"
-        });
-});
-
-myApp.controller('MainCtrl', function ($scope, $http, $translate, $routeProvider) {
+myApp.controller('MainCtrl', function ($scope, $http, $translate) {
     $scope.data = {};
     $scope.data.films = [];
 
     const urlStaticData = 'scripts/controllers/data/films.json';
     const urlDynamicData = "http://localhost:3000/api/movies";
-
-    $routeProvider.when('/', {
-        templateUrl:'views/film_details.html'
-    })
 
     $http({
         method: 'GET',
@@ -65,7 +45,7 @@ myApp.directive('ngFilm', function () {
 myApp.controller('RatingDemoCtrl', function ($scope) {
     $scope.rate = 0;
     $scope.max = 5;
-    $scope.isReadonly = false;
+    $scope.isReadonly = true;
 
     $scope.hoveringOver = function (value) {
         $scope.overStar = value;

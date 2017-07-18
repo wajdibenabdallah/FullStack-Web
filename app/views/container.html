@@ -1,14 +1,16 @@
-<div class="row row-offcanvas row-offcanvas-right">
+<div class="row row-offcanvas row-offcanvas-right website-container">
     <div class="col-xs-12 col-sm-12">
         <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
         </p>
-        <div class="jumbotron">
+        <div class="jumbotron website-container pub">
             <h1>Films</h1>
             <p>{{'WELCOME' | translate}}</p>
         </div>
-        <div ng-repeat="film in data.films">
-            <ng-film></ng-film>
+        <div class="container">
+            <div ng-repeat="film in data.films">
+                <ng-film></ng-film>
+            </div>
         </div>
     </div>
 </div>
