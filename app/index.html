@@ -2,13 +2,13 @@
 <html ng-app="moviesshowApp">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>MoviesShow</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -52,13 +52,11 @@
     </div>
 </nav>
 
-<div class="center">
-    <div>
-        <ng-include src="'./views/container.html'"></ng-include>
-    </div>
-</div><!--/.container-->
+<div ui-view="main" class="center">
+    <ng-include src="'./views/container.html'"></ng-include>
+</div>
 <hr>
-<footer class="center">
+<footer>
     <p>&copy; 2017 FullStack-LTD, Confluence</p>
 </footer>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -87,6 +85,7 @@
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 

@@ -15,4 +15,5 @@ var myApp = angular.module('moviesshowApp',
         'ngAnimate',
         'ngSanitize',
         'ui.bootstrap',
-        ]);
+        'ui.router'
+    ]);

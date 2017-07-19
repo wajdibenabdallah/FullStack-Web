@@ -36,6 +36,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
+    "angular-route": "^1.6.5",
     "express-generator": "^4.15.0",
     "generator-karma": "^2.0.0",
     "grunt-karma": "^2.0.0",

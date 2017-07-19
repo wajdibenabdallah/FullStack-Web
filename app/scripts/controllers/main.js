@@ -8,6 +8,19 @@
  * Controller of the moviesshowApp
  */
 
+myApp.config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('details', {
+            views: {
+                'main': {
+                    templateUrl: '/views/film_details.html',
+                    controller: 'filmController'
+                }
+            }
+
+        })
+});
+
 myApp.controller('MainCtrl', function ($scope, $http, $translate) {
     $scope.data = {};
     $scope.data.films = [];
@@ -32,11 +45,15 @@ myApp.controller('MainCtrl', function ($scope, $http, $translate) {
     }
 });
 
+myApp.controller('filmController', function ($scope) {
+    console.log('hello world');
+});
+
 myApp.directive('ngFilm', function () {
     return {
         templateUrl: 'views/film.html'
     };
-})
+});
 
 /*
  https://angular-ui.github.io/bootstrap/

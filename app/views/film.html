@@ -2,13 +2,14 @@
     <h6>{{film.name}}</h6>
     <div ng-controller="RatingDemoCtrl">
         <span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)"
-              on-leave="overStar = null" titles="['one','two','three','four','five']" aria-labelledby="default-rating"></span>
+              on-leave="overStar = null" titles="['one','two','three','four','five']"
+              aria-labelledby="default-rating"></span>
         <span class="label"
               ng-class="{'label-success': value}" ng-show="overStar && !isReadonly">{{value}}</span>
     </div>
     <div class="row">
         <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail">
+            <a ui-sref="details" class="thumbnail">
                 <!--
                 <img ng-src="../images/films/{{film.IMAGE}}" onerror="this.src='../images/films/_.png'" alt="">
                 -->

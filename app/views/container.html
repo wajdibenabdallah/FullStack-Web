@@ -3,10 +3,7 @@
         <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
         </p>
-        <div class="jumbotron website-container pub">
-            <h1>Films</h1>
-            <p>{{'WELCOME' | translate}}</p>
-        </div>
+        <h2 class="welcome">{{'WELCOME' | translate}}</h2>
         <div class="container">
             <div ng-repeat="film in data.films">
                 <ng-film></ng-film>
