@@ -8,7 +8,7 @@
  * Controller of the moviesshowApp
  */
 
-myApp.config(function ($stateProvider, $urlRouterProvider) {
+myApp.config(function ($stateProvider) {
     $stateProvider
         .state('details', {
             views: {
@@ -17,7 +17,6 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
                     controller: 'filmController'
                 }
             }
-
         })
 });
 

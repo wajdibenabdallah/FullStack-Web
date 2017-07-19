@@ -1,5 +1,5 @@
 html {
-    background-color: #d5d5d5;
+    background-color: #e6e6e6;
 }
 
 body {
@@ -14,12 +14,12 @@ body {
     margin: 0% 10% 0% 10%;
 }
 
-.welcome{
+.welcome {
     margin: 10% 0% 10% 0%;
     text-align: center;
 }
 
-p{
+p {
     text-align: center;
 }
 
@@ -66,6 +66,39 @@ a.thumbnail > img {
 
 }
 
-.film-details {
-    border: medium;
+.film-details-container {
+    border: inset;
+    margin: 5% -5% 5% -5%;
+    background-color: gainsboro;
 }
+
+.film-details-container-image {
+    margin: 5% 0% 25% 5%;
+}
+
+.film-details-container-infos {
+    margin: -30% 0% 0% 15%;
+    width: 50%;
+}
+
+.film-details-container-infos-rating{
+    font-size: xx-large;
+}
+
+.film-details-container-infos-title{
+    font-size: xx-large;
+}
+
+.film-details-container-infos-genre{
+    font-size: large;
+}
+
+.film-details-container-infos-country{
+    font-size: large;
+}
+
+.film-details-container-infos-links{
+    font-size: large;
+}
+
+
