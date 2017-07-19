@@ -9,14 +9,20 @@
  */
 
 myApp.config(function ($stateProvider) {
+
     $stateProvider
-        .state('details', {
-            views: {
+        .state('film', {
+            url: "/film/:filmId",
+            views:{
                 'main': {
                     templateUrl: '/views/film_details.html',
-                    controller: 'filmController'
+                    controller: function ($stateParams) {
+                        // If we got here from a url of /contacts/42
+                        console.dir($stateParams);
+                    }
                 }
             }
+
         })
 });
 
@@ -44,7 +50,8 @@ myApp.controller('MainCtrl', function ($scope, $http, $translate) {
     }
 });
 
-myApp.controller('filmController', function ($scope) {
+myApp.controller('filmController', function ($scope, $stateParams) {
+    console.dir($stateParams);
     console.log('hello world');
 });
 
