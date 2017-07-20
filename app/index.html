@@ -8,7 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -16,8 +16,30 @@
     <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/languages.css">
 </head>
+
 <body ng-controller="MainCtrl" class="center">
-<nav class="navbar navbar-fixed-top navbar-inverse center">
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Mode d'essai :</h4>
+            </div>
+            <div class="modal-body">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="setMode('D')">Importation
+                    de données Dynamique
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="setMode('S')">Importation
+                    de données Statique
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<nav id="navBar" class="navbar navbar-fixed-top navbar-inverse center" hidden>
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                 aria-expanded="false" aria-controls="navbar">
@@ -31,8 +53,8 @@
     <div class="collapse navbar-collapse nav">
         <ul class="nav navbar-nav">
             <li class="active"><a href="#">{{'HOME' | translate}}</a></li>
-            <li><a href="#about">{{'ABOUT' | translate}}</a></li>
-            <li><a href="#contact">{{'CONTACT' | translate}}</a></li>
+            <li><a href="">{{'ABOUT' | translate}}</a></li>
+            <li><a href="">{{'CONTACT' | translate}}</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown">{{'LANGUAGES' | translate}}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -40,6 +62,8 @@
                     <li><span class="lang-sm lang-lbl" lang="en" ng-click="updateLanguage('en')"></span></li>
                 </ul>
             </li>
+            <li><a href="">{{version}}</a></li>
+
         </ul>
         <ul class="auth nav navbar-nav">
             <li>
@@ -52,7 +76,7 @@
     </div>
 </nav>
 
-<div ui-view="main" class="center">
+<div id="mainPage" ui-view="main" class="center" hidden>
     <ng-include src="'./views/container.html'"></ng-include>
 </div>
 <hr>
@@ -71,7 +95,6 @@
     ga('create', 'UA-XXXXX-X');
     ga('send', 'pageview');
 </script>
-
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -86,6 +109,7 @@
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -95,4 +119,11 @@
 <script src="scripts/controllers/translator.js"></script>
 <!-- endbuild -->
 </body>
+
+<script>
+    $('#myModal').modal({show: true});
+    $(document).ready(function () {
+    });
+</script>
+
 </html>
