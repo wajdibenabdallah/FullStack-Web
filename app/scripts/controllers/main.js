@@ -13,13 +13,12 @@ const VERSION = "1.0.0";
 const urlStaticData = 'scripts/controllers/data/films.json';
 const urlDynamicData = "http://localhost:3000/api/movies";
 
-var issetMode = false;
 var testURL = null;
 
 myApp.config(function ($stateProvider) {
     $stateProvider
         .state('home', {
-            url: "",
+            url: "/",
             templateUrl: '/index.html'
         })
         .state('film', {
@@ -33,11 +32,15 @@ myApp.config(function ($stateProvider) {
         })
 });
 
-myApp.controller('MainCtrl', function ($scope, $http, $translate) {
+myApp.value("issetMode", false);
+
+myApp.controller('MainCtrl', function ($scope, $http, $translate, setModeService) {
     $scope.version = VERSION;
 
     $scope.data = {};
     $scope.data.films = [];
+
+    console.log("MainCtrl => " + setModeService.getMode());
 
     $http({
         method: 'GET',
@@ -71,14 +74,12 @@ myApp.controller('MainCtrl', function ($scope, $http, $translate) {
             }
         }
         //show page
-        angular.element("#navBar").removeAttr("hidden");
-        angular.element("#mainPage").removeAttr("hidden");
-
+        setModeService.Enable();
         //call service ...
     }
 });
 
-myApp.controller('filmController', function ($scope, $http, $stateParams) {
+myApp.controller('filmController', function ($scope, $http, $stateParams, setModeService) {
     var id = $stateParams.filmId;
     var getFilmUrl = urlDynamicData + '/' + id;
     //get Params
@@ -103,6 +104,31 @@ myApp.directive('ngFilm', function () {
         templateUrl: 'views/film.html'
     };
 });
+
+myApp.factory('setModeService', function (issetMode) {
+    var service = {};
+
+    service.getMode = function () {
+        return issetMode;
+    }
+
+    service.Enable = function () {
+        angular.element("#navBar").show();
+        angular.element("#mainPage").show();
+        issetMode = true;
+        return issetMode;
+    }
+
+    service.Disable = function () {
+        angular.element("#navBar").hide();
+        angular.element("#mainPage").hide();
+        issetMode = false;
+        return issetMode;
+    }
+
+    return service;
+})
+
 
 /*
  https://angular-ui.github.io/bootstrap/
