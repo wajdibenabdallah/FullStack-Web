@@ -69,7 +69,7 @@ myApp.controller('MainCtrl', function ($scope, $http, $translate, testUrl, setMo
 
 });
 
-myApp.controller('filmController', function ($scope, $http, $stateParams) {
+myApp.controller('filmController', function ($scope, $http, $stateParams,testUrl) {
     var id = $stateParams.filmId;
     var getFilmUrl = urlDynamicData + '/' + id;
     //get Params

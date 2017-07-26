@@ -9,9 +9,10 @@
     </div>
     <div class="row">
         <div class="col-xs-6 col-md-3">
-            <a ui-sref="film({filmId: '{{film.id}}'})" class="thumbnail">
-                <img ng-if="mode=='static'"
-                     ng-src="../images/films/{{film.image}}" onerror="this.src='../images/films/_.png'" alt="">
+            <a ng-if="mode=='static'" href="/" class="thumbnail">
+                <img ng-src="../images/films/{{film.image}}" onerror="this.src='../images/films/_.png'" alt="">
+            </a>
+            <a ng-if="mode=='dynamic'" ui-sref="film({filmId: '{{film.id}}'})" class="thumbnail">
                 <img ng-if="mode=='dynamic'"
                      ng-src="{{film.image}}" onerror="this.src='../images/films/_.png'" alt="">
             </a>
