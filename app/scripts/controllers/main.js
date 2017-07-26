@@ -18,7 +18,7 @@ var testURL = null;
 myApp.config(function ($stateProvider) {
     $stateProvider
         .state('home', {
-            url: "/",
+            url: "",
             templateUrl: '/index.html'
         })
         .state('film', {
@@ -47,6 +47,9 @@ myApp.controller('MainCtrl', function ($scope, $http, $translate, setModeService
         url: urlDynamicData
     }).then(function (success) {
         //$scope.data.films = success.data.FILMS;
+        angular.forEach(success.data, function (value, key) {
+            value.note = filtreNote(value.note);
+        });
         $scope.data.films = success.data;
         console.dir(success);
     }, function (error) {
@@ -92,11 +95,6 @@ myApp.controller('filmController', function ($scope, $http, $stateParams, setMod
     }, function (error) {
         console.dir(error);
     });
-
-    function filtreNote(note) {
-        //Note sur 10
-        return Math.round(note / 2);
-    }
 });
 
 myApp.directive('ngFilm', function () {
@@ -128,6 +126,11 @@ myApp.factory('setModeService', function (issetMode) {
 
     return service;
 })
+
+function filtreNote(note) {
+    //Note sur 10
+    return Math.round(note / 2);
+}
 
 
 /*
