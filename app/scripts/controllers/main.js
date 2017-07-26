@@ -9,11 +9,8 @@
  */
 
 const VERSION = "1.0.0";
-
 const urlStaticData = 'scripts/controllers/data/films.json';
 const urlDynamicData = "http://localhost:3000/api/movies";
-
-var testURL = null;
 
 myApp.config(function ($stateProvider) {
     $stateProvider
@@ -33,42 +30,28 @@ myApp.config(function ($stateProvider) {
 });
 
 myApp.value("issetMode", false);
+myApp.value("testUrl", null);
 
-myApp.controller('MainCtrl', function ($scope, $http, $translate, setModeService) {
+myApp.controller('MainCtrl', function ($scope, $http, $translate, testUrl, setModeService) {
     $scope.version = VERSION;
-
     $scope.data = {};
     $scope.data.films = [];
-
-    console.log("MainCtrl => " + setModeService.getMode());
-
-    $http({
-        method: 'GET',
-        url: urlDynamicData
-    }).then(function (success) {
-        //$scope.data.films = success.data.FILMS;
-        angular.forEach(success.data, function (value, key) {
-            value.note = filtreNote(value.note);
-        });
-        $scope.data.films = success.data;
-        console.dir(success);
-    }, function (error) {
-        console.dir(error);
-    });
+    $scope.mode = null;
 
     $scope.updateLanguage = function (lang) {
-        console.log(lang);
         $translate.use(lang);
     }
 
     $scope.setMode = function (M) {
         switch (M) {
             case 'D': {
-                testURL = urlDynamicData;
+                testUrl = urlDynamicData;
+                $scope.mode = "dynamic";
                 break;
             }
             case 'S': {
-                testURL = urlStaticData;
+                testUrl = urlStaticData;
+                $scope.mode = "static";
                 break;
             }
             default: {
@@ -76,13 +59,17 @@ myApp.controller('MainCtrl', function ($scope, $http, $translate, setModeService
                 return;
             }
         }
-        //show page
-        setModeService.Enable();
+        //show page ...
+        setModeService.Enable(testUrl).then(function (result) {
+            $scope.data = result;
+            console.dir($scope);
+        });
         //call service ...
     }
+
 });
 
-myApp.controller('filmController', function ($scope, $http, $stateParams, setModeService) {
+myApp.controller('filmController', function ($scope, $http, $stateParams) {
     var id = $stateParams.filmId;
     var getFilmUrl = urlDynamicData + '/' + id;
     //get Params
@@ -103,18 +90,50 @@ myApp.directive('ngFilm', function () {
     };
 });
 
-myApp.factory('setModeService', function (issetMode) {
+myApp.factory('getData', function ($http, $q) {
+    var service = {};
+    service.get = function (url) {
+        var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: url
+        }).then(function (success) {
+            console.dir(success);
+            if (success.data.hasOwnProperty('films')) {
+                success.data = success.data.films;
+            }
+            angular.forEach(success.data, function (item) {
+                item.note = filtreNote(item.note);
+            });
+            deferred.resolve(success.data);
+        }, function (error) {
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    }
+    return service;
+})
+
+myApp.factory('setModeService', function (issetMode, getData, $q) {
     var service = {};
 
     service.getMode = function () {
         return issetMode;
     }
 
-    service.Enable = function () {
+    service.Enable = function (testUrl) {
         angular.element("#navBar").show();
         angular.element("#mainPage").show();
-        issetMode = true;
-        return issetMode;
+        var deferred = $q.defer();
+        getData.get(testUrl).then(function (success) {
+            //console.dir(success);
+            deferred.resolve(success);
+            issetMode = true;
+
+        }, function (error) {
+            deferred.reject(error);
+        });
+        return deferred.promise;
     }
 
     service.Disable = function () {
