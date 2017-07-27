@@ -62,14 +62,12 @@ myApp.controller('MainCtrl', function ($scope, $http, $translate, testUrl, setMo
         //show page ...
         setModeService.Enable(testUrl).then(function (result) {
             $scope.data = result;
-            console.dir($scope);
         });
-        //call service ...
     }
 
 });
 
-myApp.controller('filmController', function ($scope, $http, $stateParams,testUrl) {
+myApp.controller('filmController', function ($scope, $http, $stateParams) {
     var id = $stateParams.filmId;
     var getFilmUrl = urlDynamicData + '/' + id;
     //get Params
@@ -98,7 +96,6 @@ myApp.factory('getData', function ($http, $q) {
             method: 'GET',
             url: url
         }).then(function (success) {
-            console.dir(success);
             if (success.data.hasOwnProperty('films')) {
                 success.data = success.data.films;
             }
@@ -126,7 +123,6 @@ myApp.factory('setModeService', function (issetMode, getData, $q) {
         angular.element("#mainPage").show();
         var deferred = $q.defer();
         getData.get(testUrl).then(function (success) {
-            //console.dir(success);
             deferred.resolve(success);
             issetMode = true;
 
